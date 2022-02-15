@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace StreamingService.Repositories
 {
-    public class UserRepository
+    public class UserRepository : IUserRepository
     {
         public bool Exists(string EmailAddress)
         {

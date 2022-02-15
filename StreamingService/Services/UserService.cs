@@ -4,8 +4,15 @@ using System;
 using System.Collections.Generic;
 
 namespace StreamingService.Services
-{
-    public class UserService
+{/// <summary>
+/// isn't this service mixing persistence processes with its primary remit?
+/// and what would it's remit be, if not to serve the subscriber [regardless of status like not-subscribed?]
+/// would there then not be an engine to interface the streaming service
+/// hence we have
+///  +subscription-user-services
+///  +subscription-streaming-serviced
+/// </summary>
+    public class UserService : IUserService
     {
         public bool Subscribe(string emailAddress, Guid subscriptionId)
         {
