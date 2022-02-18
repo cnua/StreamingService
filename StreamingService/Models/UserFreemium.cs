@@ -9,9 +9,9 @@ namespace StreamingService.Models
             FreeSongs = 3;
         }
 
-        public override void ResetRemainingSongsThisMonth()
-        {
-            throw new NotImplementedException();
-        }
+        //public override void ResetRemainingSongsThisMonth()
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }
