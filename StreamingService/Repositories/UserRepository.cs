@@ -11,12 +11,12 @@ namespace StreamingService.Repositories
             throw new NotImplementedException();
         }
 
-        public IEnumerable<User> GetAll()
+        public IEnumerable<IUser> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public void Add(User user)
+        public void Add(IUser user)
         {
             throw new NotImplementedException();
         }

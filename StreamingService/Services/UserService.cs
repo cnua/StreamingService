@@ -32,24 +32,26 @@ namespace StreamingService.Services
 
             var subscriptionRepository = new SubscriptionRepository();
 
-            var subscrition = subscriptionRepository.GetById(subscriptionId);
+            var subscription = subscriptionRepository.GetById(subscriptionId);
 
-            var user = new User(emailAddress, subscriptionId);
+            IUser user = new User(emailAddress, subscriptionId);
 
-            if (subscrition.Package == Packages.Freemium)
+            if (subscription.Package == Packages.Freemium)
             {
-                user.FreeSongs = 3;
-                user.RemainingSongsThisMonth = user.FreeSongs;
-            }
-            else if (subscrition.Package == Packages.Premium)
-            {
-                user.FreeSongs = 3 * 5;
-                user.RemainingSongsThisMonth = user.FreeSongs;
-            }
-            else if (subscrition.Package == Packages.Unlimitted)
-            {
-                user = new UnlimittedUser(emailAddress, subscriptionId);
-            }
+                user = new UserFreemium(emailAddress, subscriptionId);
+
+            }                
+            user.RemainingSongsThisMonth = user.FreeSongs;
+            //else if (subscription.Package == Packages.Premium)
+            //{
+            //    user.FreeSongs = 3 * 5;
+            //    user.RemainingSongsThisMonth = user.FreeSongs;
+            //}
+            //else if (subscription.Package == Packages.Unlimitted)
+            //{
+            //    user = new UnlimittedUser(emailAddress, subscriptionId);
+            //    user.RemainingSongsThisMonth = user.FreeSongs;
+            //}
 
             userRepo.Add(user);
 
@@ -58,13 +60,13 @@ namespace StreamingService.Services
             return true;
         }
 
-        public IEnumerable<User> GetUsers()
+        public IEnumerable<IUser> GetUsers()
         {
             //...
             throw new NotImplementedException();
         }
 
-        public IEnumerable<User> GetUsersWithRemainingSongsThisMonth()
+        public IEnumerable<IUser> GetUsersWithRemainingSongsThisMonth()
         {
             //Todo
             throw new NotImplementedException();
@@ -76,8 +78,8 @@ namespace StreamingService.Services
         /// </summary>
         public void ResetRemainingSongsThisMonth()
         {
-            var userRepository = new UserRepository();
-            foreach (User u in userRepository.GetAll())
+            IUserRepository userRepository = new UserRepository();
+            foreach (IUser u in userRepository.GetAll())
             {
                 u.ResetRemainingSongsThisMonth();
             }

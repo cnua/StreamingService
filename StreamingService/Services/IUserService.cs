@@ -6,8 +6,8 @@ namespace StreamingService.Services
 {
     public interface IUserService
     {
-        IEnumerable<User> GetUsers();
-        IEnumerable<User> GetUsersWithRemainingSongsThisMonth();
+        IEnumerable<IUser> GetUsers();
+        IEnumerable<IUser> GetUsersWithRemainingSongsThisMonth();
         void ResetRemainingSongsThisMonth();
         bool Subscribe(string emailAddress, Guid subscriptionId);
     }

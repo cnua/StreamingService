@@ -2,11 +2,11 @@
 
 namespace StreamingService.Models
 {
-    public class UnlimittedUser : UserBase
+    public class UserFreemium : UserBase
     {
-        public UnlimittedUser(string emailAddress, Guid subscriptionId) : base(emailAddress, subscriptionId)
+        public UserFreemium(string emailAddress, Guid subscriptionId) : base(emailAddress, subscriptionId)
         {
-            FreeSongs = int.MaxValue;
+            FreeSongs = 3;
         }
 
         public override void ResetRemainingSongsThisMonth()

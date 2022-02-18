@@ -2,20 +2,14 @@
 
 namespace StreamingService.Models
 {
-    public class User
+    public class User : UserBase
     {
-        public string EmailAddress { get; private set; }
-        public Guid SubscriptionId { get; private set; }
-        public int FreeSongs { get; set; }
-        public int RemainingSongsThisMonth { get; set; }
-
-        public User(string emailAddress, Guid subscriptionId)
+        public User(string emailAddress, Guid subscriptionId): base(emailAddress, subscriptionId)
         {
-            this.EmailAddress = emailAddress;
-            this.SubscriptionId = subscriptionId;
+
         }
 
-        public virtual void ResetRemainingSongsThisMonth()
+        public override void ResetRemainingSongsThisMonth()
         {
             this.RemainingSongsThisMonth = FreeSongs;
         }

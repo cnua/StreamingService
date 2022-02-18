@@ -5,8 +5,8 @@ namespace StreamingService.Repositories
 {
     public interface IUserRepository
     {
-        void Add(User user);
+        void Add(IUser user);
         bool Exists(string EmailAddress);
-        IEnumerable<User> GetAll();
+        IEnumerable<IUser> GetAll();
     }
 }
