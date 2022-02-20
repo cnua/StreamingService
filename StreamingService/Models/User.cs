@@ -6,7 +6,7 @@ namespace StreamingService.Models
     {
         public User(string emailAddress, Guid subscriptionId): base(emailAddress, subscriptionId)
         {
-
+            FreeSongs = -1;
         }
 
         //public override void ResetRemainingSongsThisMonth()

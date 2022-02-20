@@ -8,5 +8,10 @@ namespace StreamingService.Repositories
         void Add(IUser user);
         bool Exists(string EmailAddress);
         IEnumerable<IUser> GetAll();
+        #region refactor import
+        public IEnumerable<IUser> GetUsers();
+
+        #endregion
+
     }
 }

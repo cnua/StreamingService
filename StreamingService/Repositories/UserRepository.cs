@@ -20,5 +20,13 @@ namespace StreamingService.Repositories
         {
             throw new NotImplementedException();
         }
+
+        #region refactor import
+        public IEnumerable<IUser> GetUsers()
+        {
+            //...
+            throw new NotImplementedException();
+        }
+        #endregion
     }
 }
