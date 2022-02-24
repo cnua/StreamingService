@@ -35,10 +35,10 @@
     <AdditionalDesignTimeBuildInput Remove="FakesAssemblies\**" />
   </ItemGroup>
 
-  <ItemGroup>
+  <!--<ItemGroup>
     <AdditionalFiles Include="..\StreamingService.DependencyValidation\DependencyValidation1.layerdiagram" Link="DependencyValidation1.layerdiagram">
       <Visible>False</Visible>
     </AdditionalFiles>
-  </ItemGroup>
+  </ItemGroup>-->
 
 </Project>

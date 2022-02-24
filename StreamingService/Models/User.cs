@@ -2,11 +2,12 @@
 
 namespace StreamingService.Models
 {
-    public class User : UserBase
+    public sealed class User : UserBase
     {
+        public sealed override int FreeSongs { get; } = -1;
         public User(string emailAddress, Guid subscriptionId): base(emailAddress, subscriptionId)
         {
-            FreeSongs = -1;
+
         }
 
         //public override void ResetRemainingSongsThisMonth()

@@ -6,12 +6,13 @@ namespace StreamingService.Models
     {
         public string EmailAddress { get; private set; }
         public Guid SubscriptionId { get; private set; }
-        public int FreeSongs { get; set; }
+        public abstract int FreeSongs { get; }
         public int RemainingSongsThisMonth { get; set; }
         public UserBase(string emailAddress, Guid subscriptionId)
         {
-            this.EmailAddress = emailAddress;
-            this.SubscriptionId = subscriptionId;
+            EmailAddress = emailAddress;
+            SubscriptionId = subscriptionId;
+            RemainingSongsThisMonth = FreeSongs;
         }
         public virtual void ResetRemainingSongsThisMonth()
         {

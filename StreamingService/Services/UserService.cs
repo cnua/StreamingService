@@ -23,15 +23,17 @@ namespace StreamingService.Services
                 return false;
             }
 
-            var subscriptionRepository = new SubscriptionRepository();
+            
+            ISubscriptionRepository subscriptionRepository = new SubscriptionRepository();
 
-            var subscription = subscriptionRepository.GetById(subscriptionId);
+            ISubscription subscription = subscriptionRepository.GetById(subscriptionId);
 
-            IUser user = new User(emailAddress, subscriptionId);
+            IUser user = null;
 
             if (subscription.Package == Packages.Freemium)
             {
-                user = new UserFreemium(emailAddress, subscriptionId);
+                 user = new UserFreemium(emailAddress, subscriptionId);
+                //user.FreeSongs = 3;
 
             }                           
             else if (subscription.Package == Packages.Premium)
@@ -42,22 +44,36 @@ namespace StreamingService.Services
             }
             else if (subscription.Package == Packages.Unlimitted)
             {
-                user = new UnlimittedUser(emailAddress, subscriptionId);
+                 user = new UnlimittedUser(emailAddress, subscriptionId);
                 //user.RemainingSongsThisMonth = user.FreeSongs;
             }
-            user.RemainingSongsThisMonth = user.FreeSongs;
+            else
+            {
+                return false;
+            }
+            //user.RemainingSongsThisMonth = user.FreeSongs;
             userRepo.Add(user);
 
             Console.WriteLine(string.Format("Log: End add user with email '{0}'", emailAddress));
 
             return true;
         }
-
-        //public IEnumerable<IUser> GetUsers()
-        //{
-        //    //...
-        //    throw new NotImplementedException();
-        //}
+        /// <summary>
+        /// this is a sneaky method
+        /// consider single responsibility principle of class gravitates it towards a repository concern
+        /// BUT with familiarity comes an insight blindsided at first attempt of 3 hours
+        /// with honesty that its an incubated product, why?
+        /// a User cannot be mutually exclusive of a Subscription
+        /// therefore GetSubscribedUsers==User
+        /// Subscription==ProductPackageConfigurationBundle [i.e ecommerce Skew]
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public IEnumerable<IUser> GetUsers()
+        {
+            //...
+            throw new NotImplementedException();
+        }
 
         public IEnumerable<IUser> GetUsersWithRemainingSongsThisMonth()
         {
