@@ -17,7 +17,7 @@ namespace StreamingService.Test
     public class UserServiceTests
     {
         readonly string _email = "joe@hotmail.com";
-        readonly string _email2 = "jane@hotmail.com";
+        //readonly string _email2 = "jane@hotmail.com";
         readonly string _subscriptionId = "e0cb3b2f-1297-4cc1-8a87-a659b1698fc2";
         readonly Guid _premiumGuid = Guid.Parse("e0cb3b2f-1297-4cc1-8a87-a659b1698fc2");
 
@@ -37,7 +37,7 @@ namespace StreamingService.Test
         /// true when added successful
         /// </summary>
         [Fact]
-        public void SubscribeNewUserEmailAndGuid()
+        public void Subscribe()
         {
             Guid freemiumId = Guid.Parse(_subscriptionId);
             bool result = _userService.Subscribe(_email, freemiumId);
@@ -50,13 +50,11 @@ namespace StreamingService.Test
         [Fact]
         public void SubscribeWhenUserAlreadyExists()
         {
-            //create new & add user to repo
-            IUser user=new UserFreemium(_email, _premiumGuid);
-            _userRepo.Add(user);
+
             //subscribe with user service 
-            bool result = _userService.Subscribe(user.EmailAddress, user.SubscriptionId);
-            bool result2 = _userService.Subscribe(user.EmailAddress, user.SubscriptionId);
-            Assert.False(result!=result2);
+            bool result = _userService.Subscribe(_email, _premiumGuid);
+            bool result2 = _userService.Subscribe(_email, _premiumGuid);
+            Assert.True(result!=result2);
         }
         [Fact]
         public void GetUsers()
