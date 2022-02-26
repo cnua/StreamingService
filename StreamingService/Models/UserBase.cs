@@ -1,10 +1,13 @@
 ﻿using System;
-
+using System.ComponentModel.DataAnnotations;
 namespace StreamingService.Models
 {
     public abstract class UserBase: IUser
     {
+        [Required]
+        [DataType(DataType.EmailAddress)]
         public string EmailAddress { get; private set; }
+        [Required]
         public Guid SubscriptionId { get; private set; }
         public abstract int FreeSongs { get; }
         public int RemainingSongsThisMonth { get; set; }

@@ -19,7 +19,7 @@ namespace StreamingService.Test
         readonly int _FreemiumFreeSongs = 3;
         readonly int _PremiumFreeSongs = 3*5;
         readonly int _UnlimitedFreeSongs = int.MaxValue;
-        readonly int _UserFreeSongs = -1;
+        //readonly int _UserFreeSongs = -1;
         ISubscription _premiumSubscription = new PremiumSubscription();
         ISubscription _freemiumSubscription = new FreemiumSubscription();
         /// <summary>
@@ -52,6 +52,17 @@ namespace StreamingService.Test
             IUser user = new UserPremium(_email, _premiumSubscription.Id);
             Assert.True(user.FreeSongs==user.RemainingSongsThisMonth);
             Assert.True(user.FreeSongs==_PremiumFreeSongs);
+
+        }
+        [Fact]
+        public void Unlimited_Test()
+        {
+            /*
+             test freesongs for User class
+             */
+            IUser user = new UserPremium(_email, new UnlimitedSubscription().Id);
+            Assert.True(user.FreeSongs==user.RemainingSongsThisMonth);
+            Assert.True(user.FreeSongs==_UnlimitedFreeSongs);
 
         }
         [Fact]
