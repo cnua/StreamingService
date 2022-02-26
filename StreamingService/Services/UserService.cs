@@ -33,42 +33,30 @@ namespace StreamingService.Services
             if (subscription.Package == Packages.Freemium)
             {
                  user = new UserFreemium(emailAddress, subscriptionId);
-                //user.FreeSongs = 3;
 
             }                           
             else if (subscription.Package == Packages.Premium)
             {
                 user = new UserPremium(emailAddress, subscriptionId);
-                //user.FreeSongs = 3 * 5;
-                //user.RemainingSongsThisMonth = user.FreeSongs;
+
             }
             else if (subscription.Package == Packages.Unlimitted)
             {
                  user = new UnlimittedUser(emailAddress, subscriptionId);
-                //user.RemainingSongsThisMonth = user.FreeSongs;
+
             }
             else
             {
                 return false;
             }
-            //user.RemainingSongsThisMonth = user.FreeSongs;
+
             userRepo.Add(user);
 
             Console.WriteLine(string.Format("Log: End add user with email '{0}'", emailAddress));
 
             return true;
         }
-        /// <summary>
-        /// this is a sneaky method
-        /// consider single responsibility principle of class gravitates it towards a repository concern
-        /// BUT with familiarity comes an insight blindsided at first attempt of 3 hours
-        /// with honesty that its an incubated product, why?
-        /// a User cannot be mutually exclusive of a Subscription
-        /// therefore GetSubscribedUsers==User
-        /// Subscription==ProductPackageConfigurationBundle [i.e ecommerce Skew]
-        /// </summary>
-        /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
+
         public IEnumerable<IUser> GetUsers()
         {
             //...

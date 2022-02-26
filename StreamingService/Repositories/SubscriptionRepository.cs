@@ -5,8 +5,8 @@ namespace StreamingService.Repositories
 {
     public class SubscriptionRepository : ISubscriptionRepository
     {
+        public ISubscription GetById(Guid id)
 
-        public Subscription GetById(Guid id)
         {
             throw new NotImplementedException();
         }

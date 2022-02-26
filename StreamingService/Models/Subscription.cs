@@ -2,11 +2,10 @@
 
 namespace StreamingService.Models
 {
-    public class Subscription : ISubscription//,IPackage
+    public class Subscription : ISubscription
     {
         public Guid Id { get; }
         public Packages Package { get; }
 
-        //public int FreeSongs { get; }
     }
 }

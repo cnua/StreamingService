@@ -9,10 +9,5 @@ namespace StreamingService.Models
         {
 
         }
-
-        //public override void ResetRemainingSongsThisMonth()
-        //{
-        //    this.RemainingSongsThisMonth = FreeSongs;
-        //}
     }
 }

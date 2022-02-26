@@ -5,6 +5,6 @@ namespace StreamingService.Repositories
 {
     public interface ISubscriptionRepository
     {
-        Subscription GetById(Guid id);
+        ISubscription GetById(Guid id);
     }
 }
